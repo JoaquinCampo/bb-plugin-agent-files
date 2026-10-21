@@ -318,16 +318,16 @@ export default async function plugin(bb: BbPluginApi) {
 
   async function envRoot(environmentId: string | null) {
     if (environmentId === null) return null;
+    // Only successful lookups are cached: a thread's environment can still be provisioning.
     if (!envRoots.has(environmentId)) {
       try {
         const env = await bb.sdk.environments.get({ environmentId });
         const e = env as unknown as { path?: string; hostId?: string; environment?: { path?: string; hostId?: string } };
         const path = e.path ?? e.environment?.path;
         const hostId = e.hostId ?? e.environment?.hostId;
-        envRoots.set(environmentId, path && hostId ? { root: path.replace(/\/+$/, ""), hostId } : null);
+        if (path && hostId) envRoots.set(environmentId, { root: path.replace(/\/+$/, ""), hostId });
       } catch (error) {
         bb.log.warn(`environment lookup failed for ${environmentId}: ${String(error)}`);
-        envRoots.set(environmentId, null);
       }
     }
     return envRoots.get(environmentId) ?? null;

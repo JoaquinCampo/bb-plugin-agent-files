@@ -84,9 +84,14 @@ function useThreadData(threadId: string) {
 
   const ids = useRef<string[]>([threadId]);
   ids.current = activity?.threadIds ?? [threadId];
+  // A brand-new thread has no workspace yet, so keep asking for the tree until one exists.
+  const hasTree = useRef(false);
+  hasTree.current = tree?.environmentId != null;
   useRealtime("activity-changed", (payload) => {
     const changed = (payload as { threadId?: unknown } | null)?.threadId;
-    if (typeof changed === "string" && ids.current.includes(changed)) refetch();
+    if (typeof changed !== "string" || !ids.current.includes(changed)) return;
+    refetch();
+    if (!hasTree.current) refetchTree();
   });
 
   return { activity, tree, error };
