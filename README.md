@@ -2,7 +2,7 @@
 
 See which files your agents read, edit and search, live, as a tree beside the conversation.
 
-![Agent Files open beside a bb thread: two subagents reading tests while the main agent edits lib/application.js](docs/screenshot.png)
+![Agent Files open beside a bb thread: dark mode, two subagents reading tests while the main agent edits lib/application.js](docs/screenshot.png)
 
 **[Watch the 28-second demo](docs/demo.mp4)**
 
