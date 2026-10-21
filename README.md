@@ -4,8 +4,6 @@ See which files your agents read, edit and search, live, as a tree beside the co
 
 ![Agent Files open beside a bb thread: dark mode, two subagents reading tests while the main agent edits lib/application.js](docs/screenshot.png)
 
-**[Watch the 28-second demo](docs/demo.mp4)**
-
 Agent Files adds a tab to the right panel of every [bb](https://getbb.app) thread. It draws the thread's
 working directory as a file tree and lights up each file as the agent, its subagents, and any child
 threads touch it.
