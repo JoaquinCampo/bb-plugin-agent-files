@@ -1,0 +1,56 @@
+{
+  "name": "bb-plugin-agent-files",
+  "version": "0.1.0",
+  "description": "See which files your bb agents and subagents read, edit and search, live, as a tree in the thread panel.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Joaquin Campo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaquincampo/bb-plugin-agent-files.git"
+  },
+  "homepage": "https://github.com/joaquincampo/bb-plugin-agent-files#readme",
+  "keywords": [
+    "bb",
+    "bb-plugin",
+    "agents",
+    "coding-agents",
+    "file-activity"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "build": "bb plugin build",
+    "dev": "bb plugin dev"
+  },
+  "engines": {
+    "bb": ">=0.46",
+    "bbPluginSdk": ">=0.6.49"
+  },
+  "bb": {
+    "name": "Agent Files",
+    "description": "See which files a thread's agents and subagents read, edit and search, live, as a tree in the thread panel.",
+    "branding": {
+      "icon": "FileText"
+    },
+    "server": "./server.ts",
+    "app": "./app.tsx",
+    "skills": []
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.6.49",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "better-sqlite3": "^12.0.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "hono": "^4.11.9",
+    "tailwind-merge": "^3.4.0",
+    "typescript": "^5.7.0"
+  }
+}
